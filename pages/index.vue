@@ -1,5 +1,8 @@
 <template>
-  
+  <div >
+    <Aluno/>
+    <Curso/>
+  </div>
 </template>
 
 <script>
