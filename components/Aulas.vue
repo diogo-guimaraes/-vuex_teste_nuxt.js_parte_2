@@ -4,7 +4,7 @@
         <ul>
             <li v-for="aula in aulas" :key="aula.nome">
                 <p> {{aula.nome}} | {{aula.duracao}}</p>
-                <button @click="handleClick(aula)">Completar Aulas</button>
+                <button @click="completarAula(aula)">Completar Aulas</button>
                  <!-- <button @click="completarAula(aula)">Completar Aulas</button> -->
             </li>
         </ul>
@@ -14,6 +14,7 @@
 
 <script>
 // import {mapMutations} from "vuex";
+import {mapActions} from "vuex";
 export default {
     data(){
         return {            
@@ -35,6 +36,7 @@ export default {
            
     },
     methods: {
+        ...mapActions(["completarAula"]),
         // ...mapMutations(["COMPLETAR_AULA"]),
         // completarAula (aula) {
             // this.$store.commit("COMPLETAR_AULA", aula)
@@ -42,9 +44,9 @@ export default {
             // this.$store.commit("COMPLETAR_AULA", aula)
             // this.COMPLETAR_AULA(aula)
         // },
-        handleClick(aula){
-            this.$store.dispatch("completarAula", aula)
-        }
+        // handleClick(aula){
+        //     this.$store.dispatch("completarAula", aula)
+        // }
     }
 }
 </script>
