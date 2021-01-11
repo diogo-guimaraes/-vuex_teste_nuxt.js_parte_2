@@ -1,102 +1,18 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        <p>{{user.nome}} </p>
-        <label for="nome">Nome</label>
-        <input id="nome" name="nome" type="text" v-model="novoUser.nome">
-        <label for="senha">Senha</label>
-        <input id="senha" name="senha" type="text" v-model="novoUser.senha">
-      </h1>
-      <div class="links">
-        <button 
-          @click="incrementClick"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          {{counter}} Contador
-        </button >
-        <a       
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          {{user.nome}}, {{aulasCompletas}}, {{nomeMaiusculo}}
-        </a>
-         <button
-          @click="COMPLETAR_AULA"
-          
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        > 
-          completar aulas
-          {{aulasCompletas}} 
-        </button>
-        <button class="button--grey" @click="handleClick">Alterar Usuário</button>
-      </div>
-    </div>
-  </div>
+  
 </template>
 
 <script>
-import {mapState, mapMutations} from 'vuex';
 export default {
-  data(){
-    return {
-      nome: 'diogo',
-      novoUser: {
-        nome: '',
-        senha: ''
-      }
-    }
-  },  
-  computed: {
-    // user(){
-    //   return this.$store.state.user
-    // },
-    // aulasCompletas(){
-    //   return this.$store.state.aulasCompletas
-    // },
-    ...mapState([
-      "user", "aulasCompletas", "counter"
-    ]),
-    nomeMaiusculo(){
-      return this.nome.toUpperCase();
-    }
-  },
-  methods: {
-    ...mapMutations(["CHANGE_USER", "COMPLETAR_AULA"]),
-    handleClick() {
-      // commit é utilizado para ativar a mutação.
-      // this.$store.commit("changeUser", {
-        this.CHANGE_USER({
-        nome: this.novoUser.nome,
-        senha: this.novoUser.senha
-      });
-      // this.completarAula();
-      //  });
-      // console.log(this.$store.state.user)
-    },
-    incrementClick() {
-      // commit é utilizado para ativar a mutação.
-      this.$store.commit("INCREMENT");
-    },
-    // completarAulaClick(){
-    //   this.completarAula();
-    //   // this.$store.commit("completarAula");
-    // }
-  },
-  created(){
-
-  }
 
 }
 </script>
 
 <style>
+
+</style>
+<style>
+
 .container {
   margin: 0 auto;
   min-height: 100vh;
