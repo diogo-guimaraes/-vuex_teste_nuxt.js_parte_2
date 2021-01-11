@@ -12,7 +12,8 @@ export const state = () => ({
     estado: ""
   },
   aulasCompletas: [],
-  counter: 0
+  counter: 0,
+  acao: null,
 
 })
 
@@ -48,11 +49,25 @@ export const mutations = {
   },
   COMPLETAR_AULA(state ,payload) {
     state.aulasCompletas.push(payload)
-  }
+  },
+  UPDATE_ACAO(state, payload) {
+    state.acao = payload;
+  },
 }
 
 export const actions = {
   completarAula(context, payload){
     context.commit("COMPLETAR_AULA", payload)
-  }
+  },  
+  puxarAcao(context) {
+    fetch('https://api.origamid.dev/stock/aapl/quote')
+      .then((r) => r.json())
+      .then((respostaJson) => {
+        console.log(context)
+        context.commit('UPDATE_ACAO', respostaJson);
+        context.dispatch('completarAula', {
+          aula: "apple"
+        });
+    });
+  },
 }

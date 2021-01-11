@@ -1,5 +1,6 @@
 <template>
-  <div >
+  <div>
+    {{$store.state.acao}}
     <Aluno/>
     <Curso/>
   </div>
@@ -7,7 +8,9 @@
 
 <script>
 export default {
-
+created(){
+  this.$store.dispatch("puxarAcao")
+}
 }
 </script>
 
