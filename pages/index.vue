@@ -1,6 +1,17 @@
 <template>
   <div>
-    {{$store.state.acao}}
+      <ul>
+        <li v-for="livro in $store.state.livros" :key="livro.nome">
+          <p>{{livro.nome}}</p>
+        </li>
+      </ul>
+      <ul>
+        <h2>livros lidos</h2>
+        <li v-for="livro in $store.getters.livrosLidos" :key="livro.nome">
+          <p>{{livro.nome}}</p>
+        </li>
+      </ul>
+    <!-- {{$store.state.acao}} -->
     <Aluno/>
     <Curso/>
   </div>

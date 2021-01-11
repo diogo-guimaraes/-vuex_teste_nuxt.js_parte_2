@@ -14,7 +14,20 @@ export const state = () => ({
   aulasCompletas: [],
   counter: 0,
   acao: null,
-
+  livros: [
+    {
+      nome: "O Senhor dos Anéis",
+      lido: true,
+    },
+    {
+      nome: "Harry Potter",
+      lido: true,
+    },
+    {
+      nome: "As Crônicas de Gelo e Fogo",
+      lido: false,
+    }
+  ]
 })
 
 // export const mutations = {
@@ -67,7 +80,14 @@ export const actions = {
         context.commit('UPDATE_ACAO', respostaJson);
         context.dispatch('completarAula', {
           aula: "apple"
-        });
-    });
-  },
+        })
+    })
+  }
+}
+export const getters = {
+  livrosLidos(state) {
+    return state.livros.filter(livro => livro.lido);
+  }
+  // ou
+  // livrosLidos: state => state.livros.filter(livro => livro.lido)
 }
