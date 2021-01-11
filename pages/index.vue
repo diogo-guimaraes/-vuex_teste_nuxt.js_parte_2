@@ -1,16 +1,16 @@
 <template>
   <div>
-      <ul>
-        <li v-for="livro in $store.state.livros" :key="livro.nome">
-          <p>{{livro.nome}}</p>
-        </li>
-      </ul>
-      <ul>
-        <h2>livros lidos</h2>
-        <li v-for="livro in $store.getters.livrosLidos" :key="livro.nome">
-          <p>{{livro.nome}}</p>
-        </li>
-      </ul>
+    <ul>
+      <li v-for="livro in livros" :key="livro.nome">
+        <p>{{livro.nome}}</p>
+      </li>
+    </ul>
+    <ul>
+      <h2>livros lidos</h2>
+      <li v-for="livro in livrosLidos" :key="livro.nome">
+        <p>{{livro.nome}}</p>
+      </li>
+    </ul>
     <!-- {{$store.state.acao}} -->
     <Aluno/>
     <Curso/>
@@ -18,10 +18,16 @@
 </template>
 
 <script>
+import { mapGetters} from "vuex"
+import { mapState} from "vuex"
 export default {
-created(){
-  this.$store.dispatch("puxarAcao")
-}
+  computed: {
+    ...mapGetters(["livrosLidos"]),
+     ...mapState(["livros"])
+  },
+  created(){
+    this.$store.dispatch("puxarAcao")
+  }
 }
 </script>
 
