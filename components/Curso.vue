@@ -1,5 +1,9 @@
 <template>
-    <p>aula</p>
+
+    <div>
+        <p>Curso de java</p>
+        <Aulas/>
+    </div>
 </template>
 
 <script>
