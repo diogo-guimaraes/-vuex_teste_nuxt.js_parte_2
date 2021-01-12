@@ -7,7 +7,7 @@
     </ul>
     <ul>
       <h2>livros lidos</h2>
-      <li v-for="livro in livrosLidos" :key="livro.nome">
+      <li v-for="livro in livrosLidos(true)" :key="livro.nome">
         <p>{{livro.nome}}</p>
       </li>
     </ul>

@@ -27,7 +27,7 @@ export const state = () => ({
       nome: "As Crônicas de Gelo e Fogo",
       lido: false,
     }
-  ]
+  ],
 })
 
 // export const mutations = {
@@ -85,9 +85,18 @@ export const actions = {
   }
 }
 export const getters = {
+  // livrosLidos(state) {
+  //   return state.livros.filter(livro => livro.lido);
+  // }
+
+  // puxar livros passando true ou false lá no index
+
   livrosLidos(state) {
-    return state.livros.filter(livro => livro.lido);
+    return function (lido){
+      return state.livros.filter(livro => livro.lido == lido);
+    }
   }
+
   // ou
   // livrosLidos: state => state.livros.filter(livro => livro.lido)
 }
